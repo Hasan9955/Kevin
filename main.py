@@ -42,24 +42,38 @@ def run_kevin():
         song = command.replace('play', '')
         talk('playing' + song)
         pywhatkit.playonyt(song)
+    elif 'how are you' in command: 
+        print("I am good, thank you for asking. I hope you're doing well too. If I can help with anything, just  ask.")
+        talk("I am good, thank you for asking. I hope you're doing well too. If I can help with anything, just  ask.")
 
+    
     elif 'time' in command:
         time = datetime.datetime.now().strftime('%I:%M %p')
-        talk('Current time is' + time)
         print(time)
+        talk('Current time is' + time)
+    
+    elif 'date' in command:
+        date = datetime.datetime.now().date()
+        print(date)
+        talk(date)
 
     elif 'tell me about' in command: 
         person = command.replace('tell me about', '')
-        info = wikipedia.summary(person, 1)
+        info = wikipedia.summary(person, 3)
         print(info)
         talk(info)
     
+    elif 'what is your name' in command:
+        print('My name is kevin. My mission is To assist you.')
+        talk('My name is kevin. My mission is To assist you.')
+
     elif 'are you single' in command: 
         talk('I am in a relationship with wifi')
+        
     elif 'jokes' in command:
         jokes = pyjokes.get_joke()
-        talk(jokes)
         print(jokes)
+        talk(jokes)
     else: 
         talk('I did not get it but I am going to search it for you')
         pywhatkit.search(command)
